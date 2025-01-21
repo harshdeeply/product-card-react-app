@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Product Card React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple product card component built with React, Tailwind CSS, and an image preloading technique to ensure smooth hover transitions. The app showcases products with sale badges, color variants, and hover effects to show alternate product images.
 
-## Available Scripts
+## Live Demo
 
-In the project directory, you can run:
+The site is deployed and accessible at:  
+[https://harsh-domaine-product-card.netlify.app/](https://harsh-domaine-product-card.netlify.app/)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Sale Badge**: Displays a sale badge on the top-left of the product image when the product is on sale.
+- **Hover Effect**: Shows a secondary image of the product when hovering over the product card, without changing the height of the card.
+- **Color Variant Selection**: Users can click through color swatches to see the product in different colors.
+- **Preloading Images**: The variant images are preloaded to avoid delays when hovering, ensuring smooth transitions.
+- **Responsive Design**: The card is responsive and works well across different screen sizes.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Approach
 
-### `npm test`
+### **1. React and Tailwind CSS**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I used React for building the component-driven UI and Tailwind CSS for fast and flexible styling. The utility-first approach with Tailwind CSS allowed me to quickly adjust the layout, spacing, and responsive styles.
 
-### `npm run build`
+### **2. Hover Effects with Image Preloading**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The hover effect is implemented such that when the user hovers over the product image, an alternate image appears. To avoid delay during hover, I preload the image using JavaScript. The `Image` object in JavaScript allows me to preload the image before it is displayed, ensuring that the image is already available in the cache when the user hovers over the product.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **3. State Management with React**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I used React's `useState` hook to manage the product variant and hover states. The `selectedVariant` state holds the currently selected variant, while the `isHovered` state tracks whether the user is hovering over the image. The `useEffect` hook handles image preloading when the hover state is active.
 
-### `npm run eject`
+### **4. Conditional Rendering**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The component uses conditional rendering to show the appropriate image based on the hover state and selected variant. When the variant changes, the image is preloaded, and when the hover event occurs, the preloaded image is displayed immediately without fetching it again.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## How to Run Locally
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To run this project locally on your machine, follow these steps:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **1. Clone the Repository**
 
-## Learn More
+First, clone the repository to your local machine:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone https://github.com/harshdeeply/product-card-react-app.git
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### **2. Install Dependencies**
 
-### Code Splitting
+Navigate into the project directory and install the dependencies:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+cd product-card-react-app
+npm ci
+```
 
-### Analyzing the Bundle Size
+### **3. Start the Development Server**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Once the dependencies are installed, you can start the development server:
 
-### Making a Progressive Web App
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This will start the app at [http://localhost:3000](http://localhost:3000). Open it in your browser to view the product card in action.
 
-### Advanced Configuration
+### **4. Build the Project**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To create a production-ready build, run:
 
-### Deployment
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This will generate the `build` directory with optimized assets that you can deploy to a hosting provider.
 
-### `npm run build` fails to minify
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **React**: JavaScript library for building user interfaces.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
+- **JavaScript**: Used for preloading images and handling hover transitions.
+- **Netlify**: Deployed the app to Netlify for easy hosting.
